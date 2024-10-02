@@ -1,0 +1,17 @@
+version: '3'
+services:
+  web:
+    image: nginx:latest
+    container_name: web
+    ports:
+      - "8080:80"
+    volumes:
+      - ~/docker/web_server/web_data:/usr/share/nginx/html
+      - ~/docker/web_server/web_backup:/backup
+    restart: always
+    networks:
+      - web_net
+
+networks:
+  web_net:
+    external: true
